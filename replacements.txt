@@ -1,2 +1,0 @@
-awware==>gatsby-site
-antonborysov==>anton-codes-iac
