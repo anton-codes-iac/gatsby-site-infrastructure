@@ -20,3 +20,8 @@ variable "prismic_custom_types_token" {
   type        = string
   sensitive   = true
 }
+
+variable "github_oidc_subject" {
+  description = "The GitHub repository subject for OIDC federation (e.g., repo:user/repo:ref:refs/heads/branch)"
+  type        = string
+}

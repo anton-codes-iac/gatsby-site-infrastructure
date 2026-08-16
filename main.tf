@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "gatsby-site-tf-state-26"      # YOUR unique bucket name
+    bucket = "gatsby-site-tf-state"    # YOUR unique bucket name
     key    = "stage/terraform.tfstate" # The name of the file inside S3
     region = "us-east-2"
   }
@@ -309,7 +309,7 @@ output "alb_dns_name" {
 
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "gatsby-site-tf-state-26"
+  bucket = "gatsby-site-tf-state"
 
   lifecycle {
     prevent_destroy = true # Protects the bucket from accidental deletion
