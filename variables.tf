@@ -25,3 +25,9 @@ variable "github_oidc_subject" {
   description = "The GitHub repository subject for OIDC federation (e.g., repo:user/repo:ref:refs/heads/branch)"
   type        = string
 }
+
+variable "environment_active" {
+  description = "Toggle to pause Fargate compute to save costs"
+  type        = bool
+  default     = true
+}

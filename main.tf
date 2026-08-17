@@ -158,8 +158,11 @@ resource "aws_ecs_service" "web_service" {
   name            = "gatsby-site-web-service"
   cluster         = aws_ecs_cluster.web_cluster.id
   task_definition = aws_ecs_task_definition.web_task_def.arn
-  desired_count   = 0
-  launch_type     = "FARGATE"
+
+  # The Sleep Switch: If true = 1 container. If false = 0 containers.
+  desired_count = var.environment_active ? 1 : 0
+
+  launch_type = "FARGATE"
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_sg.id]
