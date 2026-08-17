@@ -12,3 +12,7 @@ crash.*.log
 # Ignore any .tfvars files that are generated automatically
 *.tfvars
 *.tfvars.json
+
+# Ignore binaries and zip files
+*.zip
+terraform

@@ -158,7 +158,7 @@ resource "aws_ecs_service" "web_service" {
   name            = "gatsby-site-web-service"
   cluster         = aws_ecs_cluster.web_cluster.id
   task_definition = aws_ecs_task_definition.web_task_def.arn
-  desired_count   = 1
+  desired_count   = 0
   launch_type     = "FARGATE"
 
   network_configuration {
@@ -216,7 +216,7 @@ resource "aws_iam_role" "github_actions_role" {
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
           StringEquals = {
-            "token.actions.githubusercontent.com:sub" = "repo:anton-codes-iac/gatsby-site:ref:refs/heads/stage",
+            "token.actions.githubusercontent.com:sub" = var.github_oidc_subject,
             "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
           }
         }
@@ -306,7 +306,6 @@ output "alb_dns_name" {
   description = "The public URL of your Application Load Balancer"
   value       = "http://${aws_lb.web_lb.dns_name}"
 }
-
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "gatsby-site-tf-state"
